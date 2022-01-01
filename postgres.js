@@ -228,7 +228,13 @@ client.query("SELECT product.product_name, product.product_type, order_item.orde
 client.query("SELECT product.product_name, product.product_type, order_item.order_id,order_details.payment_id, payment_details.provider FROM product INNER JOIN order_item ON product.product_id=order_item.product_id INNER JOIN order_details ON order_item.order_id = order_details.order_id INNER JOIN payment_details ON order_details.payment_id = payment_details.payment_id WHERE product.product_name = 'GTX_0'")
 console.log(new Date() - before);
 client.query("DELETE FROM product")
-client.query("UPDATE post_performance SET gpu_type = 'GraphicsX4_Card'");
+client.query("DELETE FROM cart_item")
+client.query("DELETE FROM order_item")
+client.query("DELETE FROM shopping_session")
+client.query("DELETE FROM user_table")
+client.query("DELETE FROM order_details")
+client.query("DELETE FROM payment_details")
+client.query("UPDATE product SET gpu_type = 'GraphicsX4_Card'");
 client.end;
 
 
